@@ -71,13 +71,19 @@ export default function SignUpForm() {
     try {
       const response = await axios.post<ApiResponse>('/api/signup', data);
 
-      toast({
-        title: 'Success',
-        description: response.data.message,
-      });
-
-      router.replace(`/verify/${username}`);
-
+      if (response.data.success) {
+        toast({
+          title: 'Success',
+          description: response.data.message,
+        });
+        router.replace(`/verify/${username}`);
+      } else {
+        toast({
+          title: 'Sign Up Failed',
+          description: response.data.message,
+          variant: "destructive"
+        });
+      }
       setIsSubmitting(false);
     } catch (error) {
       console.error('Error during sign-up:', error);
@@ -144,7 +150,7 @@ export default function SignUpForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <Input {...field} name="email" />
-                  <p className='text-muted text-gray-700 text-sm'>We will send you a verification code</p>
+                  <p className='text-sm text-gray-500'>We will send you a verification code</p>
                   <FormMessage />
                 </FormItem>
               )}
@@ -176,8 +182,8 @@ export default function SignUpForm() {
         <div className="text-center mt-4">
           <p>
             Already a member?{' '}
-            <Link href="/signin" className="text-blue-600 hover:text-blue-800">
-              Sign in
+            <Link href="/signin" className="text-blue-600 hover:text-blue-800 underline">
+              Signin
             </Link>
           </p>
         </div>

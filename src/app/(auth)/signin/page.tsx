@@ -77,7 +77,6 @@ export default function Signin() {
                                 <FormItem>
                                     <FormLabel>Email/Username</FormLabel>
                                     <Input {...field} name="email" />
-                                    <p className='text-muted text-gray-400 text-sm'>We will send you a verification code</p>
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -108,8 +107,8 @@ export default function Signin() {
                 <div className="text-center mt-4">
                     <p>
                         New to True Feedback?{' '}
-                        <Link href="/signup" className="text-blue-600 hover:text-blue-800">
-                            Sign up
+                        <Link href="/signup" className="text-blue-600 hover:text-blue-800 underline">
+                            Signup
                         </Link>
                     </p>
                 </div>
