@@ -5,6 +5,8 @@ import { Mail } from 'lucide-react'
 import React from 'react'
 import messages from "@/messages.json"
 import Autoplay from "embla-carousel-autoplay"
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 function Home() {
 
@@ -29,10 +31,7 @@ function Home() {
             {messages.map((message, index) => (
               <CarouselItem key={index} className="p-4">
                 <Card>
-                  <CardHeader>
-                    <CardTitle>{message.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4">
+                  <CardContent className="pt-4 flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4">
                     <Mail className="flex-shrink-0" />
                     <div>
                       <p>{message.content}</p>
@@ -46,8 +45,15 @@ function Home() {
             ))}
           </CarouselContent>
         </Carousel>
+       <div className='flex flex-wrap items-center'>
+       <div className='p-4 text-l'>
+          New to True Feedback
+        </div>
+        <Link href={"/signup"}>
+          <Button className="w-full md:w-auto bg-slate-100 text-black" variant={'outline'}>Get Started</Button>
+        </Link>
+       </div>
       </main>
-      {/* Footer */}
       <footer className="text-center p-4 md:p-6 bg-gray-900 text-white">
         © 2023 True Feedback. All rights reserved.
       </footer>
