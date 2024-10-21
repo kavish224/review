@@ -181,7 +181,7 @@ export default function SignUpForm() {
         </Form>
         <div className="text-center mt-4">
           <p>
-            Already a member?{' '}
+            Already a user?{' '}
             <Link href="/signin" className="text-blue-600 hover:text-blue-800 underline">
               Signin
             </Link>
